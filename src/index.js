@@ -5,7 +5,7 @@ console.log("CONTENT NOT YET LOADED!", fullname); //what will fullname evaluate 
 const button = document.getElementById('button')
 button.addEventListener('click', getApiInfo)
 
-
+// get the right elements to add info later
 const street = document.getElementById('street')
 const city = document.getElementById('city')
 const state = document.getElementById('state')
@@ -15,27 +15,25 @@ const cell = document.getElementById('cell')
 const date_of_birth = document.getElementById('date_of_birth')
 const profpic = document.getElementById('profile_picture')
 
-
+// what to do upon clicking botton
 function getApiInfo () {
   fetch('https://randomuser.me/api/')
   .then( res => res.json() )
-  .then( data => {
-    console.log(data.results[0])
-    fullname.textContent = data.results[0].name.title + " " + data.results[0].name.first + " " + data.results[0].name.last
-    street.textContent = data.results[0].location.street
-    city.textContent = data.results[0].location.city
-    state.textContent = data.results[0].location.state
-    postcode.textContent = data.results[0].location.postcode
-    phone.textContent = data.results[0].phone
-    cell.textContent = data.results[0].cell
-    date_of_birth.textContent = data.results[0].dob.date.slice(0,10)
-    email.textContent = data.results[0].email
-    profpic.src = data.results[0].picture.large
-  })
+  .then( data => fillInInfo(data))
+}
 
-
-
-
+//separate out what to do with the api info
+function fillInInfo(data) {
+  fullname.textContent = data.results[0].name.title + " " + data.results[0].name.first + " " + data.results[0].name.last
+  street.textContent = data.results[0].location.street
+  city.textContent = data.results[0].location.city
+  state.textContent = data.results[0].location.state
+  postcode.textContent = data.results[0].location.postcode
+  phone.textContent = data.results[0].phone
+  cell.textContent = data.results[0].cell
+  date_of_birth.textContent = data.results[0].dob.date.slice(0,10)
+  email.textContent = data.results[0].email
+  profpic.src = data.results[0].picture.large
 }
 
 
