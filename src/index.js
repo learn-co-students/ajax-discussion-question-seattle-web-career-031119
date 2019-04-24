@@ -11,7 +11,7 @@ button.addEventListener('click', getInfo)
           fetch('https://randomuser.me/api/')
             .then( res => res.json() )
             .then( data => {
-              console.log(data.results[0])
+              // console.log(data.results[0])
             fullname.textContent = data.results[0].name.title + "." + " "+ data.results[0].name.first + " " + data.results[0].name.last })
   }
 
