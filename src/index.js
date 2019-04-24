@@ -13,6 +13,7 @@ const postcode = document.getElementById('postcode')
 const phone = document.getElementById('phone')
 const cell = document.getElementById('cell')
 const date_of_birth = document.getElementById('date_of_birth')
+const profpic = document.getElementById('profile_picture')
 
 
 function getApiInfo () {
@@ -29,6 +30,7 @@ function getApiInfo () {
     cell.textContent = data.results[0].cell
     date_of_birth.textContent = data.results[0].dob.date.slice(0,10)
     email.textContent = data.results[0].email
+    profpic.src = data.results[0].picture.large
   })
 
 
